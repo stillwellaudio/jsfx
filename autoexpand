@@ -117,9 +117,13 @@ out_pin:right output
   ) : (
     rundb = overdb + relcoef * (rundb - overdb);
   );
-  overdb = rundb;
+  overdb = min(0, rundb);
 
-  cratio = (softknee ? (1 + (ratio-1) * min(overdb, 6) / 6) : ratio);
+  softknee ? (
+   cratio = 1 + (ratio-1) * max(1,(min(overdb, 6) / 6));
+  ) : (
+   cratio = ratio;
+  );
   
   gr = overdb * (cratio-1)/cratio;
   grv = exp(gr * db2log);
