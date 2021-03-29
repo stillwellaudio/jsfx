@@ -102,7 +102,7 @@ out_pin:right output
     runave = maxspl + rmscoef * (runave - maxspl);
     det = sqrt(max(0,runave));
   );
-  overdb = 2.08136898 * log(det/cthreshv) * log2db;
+  overdb = log(det/cthreshv) * log2db;
   overdb > maxover ? (
     maxover = overdb;
     attime = attimes[max(0,floor(abs(overdb)))];   // attack time per formula
