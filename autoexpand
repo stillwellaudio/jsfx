@@ -105,7 +105,7 @@ out_pin:right output
   overdb = log(det/cthreshv) * log2db;
   overdb > maxover ? (
     maxover = overdb;
-    attime = attimes[max(0,floor(abs(overdb)))];   // attack time per formula
+    attime = attimes[min(119,max(0,floor(abs(overdb))))];   // attack time per formula
     atcoef = exp(-1/(attime * srate));
     reltime = overdb / 125;                        // release at constant 125 dB/sec.
     relcoef = exp(-1/(reltime * srate));
